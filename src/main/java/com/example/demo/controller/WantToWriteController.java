@@ -19,7 +19,7 @@ public class WantToWriteController {
 
     @RequestMapping("addMessage/{title}/{content}")
     public void addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
-        System.out.println("-----i come in------");
+        System.out.println("-----i come in----aaa--");
         Blogs blogs = new Blogs();
         blogs.setContent(content);
         blogs.setTitile(title);
