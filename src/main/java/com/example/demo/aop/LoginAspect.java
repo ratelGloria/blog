@@ -1,6 +1,7 @@
 package com.example.demo.aop;
 
 import com.example.demo.common.ServerResponse;
+import com.example.demo.pojo.User;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,10 +25,10 @@ public class LoginAspect {
 //    @Autowired
 //    HttpSession httpSession;
 
-    @Pointcut("execution (* com.example.demo.controller..*(..))")
+//    @Pointcut("execution (* com.example.demo.controller..*(..))")
     public void loginAspect(){}
 
-    @Before("loginAspect()")
+//    @Before("loginAspect()")
     public void loginAspectBefore(JoinPoint joinPoint){
 
         System.out.println("------beforelogin------");
@@ -42,8 +43,8 @@ public class LoginAspect {
         HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
         System.out.println("------token------"+session);
     }
-    @Around("loginAspect()")
-    public ServerResponse loginAspectAround(JoinPoint joinPoint){
+//    @Around("loginAspect()")
+    public void loginAspectAround(JoinPoint joinPoint){
 
         System.out.println("------Aroundlogin------");
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
@@ -53,12 +54,20 @@ public class LoginAspect {
         String userName = (String)request.getSession().getAttribute("userName");
 
 //        String token = request.getHeader("token");
-        System.out.println("---Around---token------"+userName);
+
 
         if(userName == null){
-            return ServerResponse.serverResponseUnSuccess("How are you");
+            System.out.println("---Around---token------"+userName);
+            User user = new User();
+            user.setId(1);
+            user.setUsername("hh");
+//            return ServerResponse.serverResponseSuccess(user);
+//            return user;
+//            return ServerResponse.serverResponseUnSuccess("How are you");
         }else {
-            return ServerResponse.serverResponseSuccess();
+            System.out.println("---Around---token--22----"+userName);
+//            return null;
+//            return ServerResponse.serverResponseSuccess();
         }
 
 //        HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);

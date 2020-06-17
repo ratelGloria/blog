@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.common.ServerResponse;
 import com.example.demo.pojo.Blogs;
 import com.example.demo.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,13 @@ public class WantToWriteController {
     BlogService blogService;
 
     @RequestMapping("addMessage/{title}/{content}")
-    public void addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
+    public Blogs addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
         System.out.println("-----i come in----aaa--");
         Blogs blogs = new Blogs();
         blogs.setContent(content);
         blogs.setTitile(title);
-        blogService.addMessage(blogs);
+//        blogService.addMessage(blogs);
+
+        return blogs;
     }
 }

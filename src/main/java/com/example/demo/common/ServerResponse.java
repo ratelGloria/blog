@@ -3,6 +3,8 @@ package com.example.demo.common;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.stereotype.Controller;
 
+@Controller
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> {
 
         private static  Integer SUCCESS = 1;
