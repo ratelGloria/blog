@@ -18,11 +18,14 @@ public class WantToWriteController {
     BlogService blogService;
 
     @RequestMapping("addMessage/{title}/{content}")
-    public void addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
-        System.out.println("-----i come in----aaa--");
+    public Blogs addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
+        System.out.println("-----i come in------");
+
         Blogs blogs = new Blogs();
         blogs.setContent(content);
         blogs.setTitile(title);
-        blogService.addMessage(blogs);
+
+        return blogs;
+//        blogService.addMessage(blogs);
     }
 }
