@@ -16,8 +16,10 @@ public class BlogServiceImp implements BlogService {
     @Override
     public ServerResponse addMessage(Blogs blogs) {
 
-        blogsMapper.addMessage(blogs);
-
-        return null;
+        int i = blogsMapper.addMessage(blogs);
+        if(i==1){
+            return ServerResponse.serverResponseSuccess("提交成功");
+        }
+        return ServerResponse.serverResponseUnSuccess("数据提交失败");
     }
 }

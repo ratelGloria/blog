@@ -194,4 +194,16 @@ public class Review {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", cretaeTime=" + cretaeTime +
+                ", updateTime=" + updateTime +
+                ", ifDeleted='" + ifDeleted + '\'' +
+                ", username='" + username + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -290,4 +290,19 @@ public class User {
     public void setIco(String ico) {
         this.ico = ico == null ? null : ico.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", createTime=" + createTime +
+                ", ifDeleted='" + ifDeleted + '\'' +
+                ", updateTime=" + updateTime +
+                ", ico='" + ico + '\'' +
+                '}';
+    }
 }

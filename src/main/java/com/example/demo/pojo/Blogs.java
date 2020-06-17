@@ -226,4 +226,17 @@ public class Blogs {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Blogs{" +
+                "id=" + id +
+                ", titile='" + titile + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", author='" + author + '\'' +
+                ", ifDeleted='" + ifDeleted + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
