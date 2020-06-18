@@ -4,7 +4,7 @@ import com.example.demo.common.ServerResponse;
 import com.example.demo.pojo.User;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface UserService {
 
     ServerResponse addUser(User user);

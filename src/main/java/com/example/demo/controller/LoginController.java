@@ -61,7 +61,7 @@ public class LoginController {
         return ServerResponse.serverResponseUnSuccess();
     }
 
-    @RequestMapping("up")
+    @RequestMapping("update")
     public ServerResponse updateUser(@RequestParam("username") String username, @RequestParam("pwd") String pwd,@RequestParam("ico") String ico,@RequestParam("email") String email){
         if (username.equals("")||username==null||pwd.equals("")||pwd==null) {
             return ServerResponse.serverResponseUnSuccess("数据不全");
