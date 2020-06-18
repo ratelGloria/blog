@@ -26,6 +26,6 @@ public class WantToWriteController {
         blogs.setTitile(title);
 
         return blogService.addMessage(blogs);
-
+//无知使我对这个世界充满好奇
     }
 }
