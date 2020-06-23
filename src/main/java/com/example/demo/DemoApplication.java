@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@SpringBootApplication
 @EnableScheduling
 //@MapperScan("com.example.demo.dao")
 public class DemoApplication {

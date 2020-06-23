@@ -19,13 +19,13 @@
 	</properties>
 
 	<dependencies>
-<!--	spring-boot-starter ：核心模块，包括自动配置、支持、日志和YAML(用来表达数据序列化的格式)	-->
+		<!--	spring-boot-starter ：核心模块，包括自动配置、支持、日志和YAML(用来表达数据序列化的格式)	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-<!--	spring-boot-starter-test :测试模块，包括JUnit(单元测试)，Hamcrest(单元测试的框架?再具体不太清楚)，Mockito	-->
+		<!--	spring-boot-starter-test :测试模块，包括JUnit(单元测试)，Hamcrest(单元测试的框架?再具体不太清楚)，Mockito	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -38,7 +38,7 @@
 			</exclusions>
 		</dependency>
 
-<!--	spring-boot-starter-web :引入web模块	-->
+		<!--	spring-boot-starter-web :引入web模块	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -48,7 +48,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!--逆向工程包-->
+		<!--逆向工程包-->
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>
 			<artifactId>mybatis-generator-core</artifactId>
@@ -90,30 +90,42 @@
 		</dependency>
 
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 
 		<dependency>
-
 			<groupId>org.mybatis.spring.boot</groupId>
-
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-
 			<version>1.2.0</version>
+		</dependency>
 
+
+		<dependency>
+		<!-- 添加该jar后springboot默认启用连接池 -->
+		<!--@mapper找不到mapper的原因，但是mybatis-spring-boot-starter里面是包含这个依赖的，不知道为什么加载不进来-->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-jdbc</artifactId>
+	</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
-
 
 
 	<build>
 		<plugins>
 			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
 
 			<!--</plugin>-->
 			<plugin>

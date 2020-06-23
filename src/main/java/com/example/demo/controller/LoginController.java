@@ -7,6 +7,7 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,15 +44,22 @@ public class LoginController {
         if (id.equals("")||id==null||pwd.equals("")||pwd==null) {
             return ServerResponse.serverResponseUnSuccess("数据不全");
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = simpleDateFormat.format(new Date());
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String format = simpleDateFormat.format(new Date());
+//        String timeStamp = "";
+//        try {
+////            timeStamp = String.valueOf(simpleDateFormat.parse(format).getTime()/1000);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        String timeStamp = String.valueOf(System.currentTimeMillis());
         user.setId(id);
         user.setPassword(pwd);
-        user.setCreateTime(format);
+        user.setCreateTime(timeStamp);
         ServerResponse serverResponse = userService.addUser(user);
         User userInfo = (User)serverResponse.getData();
 
-        if(pwd.equals(userInfo.getPassword())){
+        if(userInfo != null && pwd.equals(userInfo.getPassword())){
             HashMap<String, String> userInfoMap = new HashMap<String, String>();
             userInfoMap.put("id",userInfo.getId());
             

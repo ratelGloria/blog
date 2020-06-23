@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.controller.HelloWorldController;
 import com.example.demo.controller.ItemController;
+import com.example.demo.controller.LoginController;
 import com.example.demo.pojo.Item;
 import javafx.application.Application;
 import org.junit.Assert;
@@ -61,6 +62,8 @@ public class Test {
     @Autowired
     private HelloWorldController helloWorldController;
 
+    @Autowired
+    private LoginController loginController;
     @Autowired
     private ItemController itemController;
 

@@ -18,7 +18,7 @@ public class UserServiceImp implements UserService {
         int i = userMapper.addUser(user);
 
         if(i>0){
-            return ServerResponse.serverResponseSuccess();
+            return ServerResponse.serverResponseSuccess(user);
         }
         return ServerResponse.serverResponseUnSuccess();
     }
