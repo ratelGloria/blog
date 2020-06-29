@@ -13,4 +13,9 @@ public interface IRedisService {
     Object getMapValue(String key);
 
     Object getValue(String key);
+
+
+    void setValueString(String key, Map value);
+
+    Object getValueString(String key);
 }

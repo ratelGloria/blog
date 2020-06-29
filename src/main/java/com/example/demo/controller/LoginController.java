@@ -39,6 +39,15 @@ public class LoginController {
         return ServerResponse.serverResponseUnSuccess();
     }
 
+    @RequestMapping("redis/{username}")
+    public ServerResponse redis(@PathVariable("username") String username){
+        HashMap<String, String> stringHashMap = new HashMap<>();
+        stringHashMap.put("1",username);
+        iRedisService.setValueString("test",stringHashMap);
+
+        return ServerResponse.serverResponseSuccess(username);
+    }
+
     @RequestMapping("up/{id}/{pwd}")
     public ServerResponse signUp(@PathVariable("id") String id,@PathVariable("pwd") String pwd){
         if (id.equals("")||id==null||pwd.equals("")||pwd==null) {
