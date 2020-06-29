@@ -5,6 +5,7 @@ import com.example.demo.pojo.User;
 import com.example.demo.redis.IRedisService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -25,6 +26,9 @@ public class LoginController {
     @Autowired
     IRedisService iRedisService;
 
+    @Autowired
+    ValueOperations valueOperations;
+
     @RequestMapping("in/{username}/{pwd}")
     public ServerResponse login(@PathVariable("username") String username,@PathVariable("pwd") String pwd){
         if (username.equals("")||username==null||pwd.equals("")||pwd==null) {
@@ -43,9 +47,10 @@ public class LoginController {
     public ServerResponse redis(@PathVariable("username") String username){
         HashMap<String, String> stringHashMap = new HashMap<>();
         stringHashMap.put("1",username);
-        iRedisService.setValueString("test",stringHashMap);
+//        iRedisService.setValueString("test:one",username);
 
-        return ServerResponse.serverResponseSuccess(username);
+        valueOperations.set("1",username);
+        return ServerResponse.serverResponseSuccess(valueOperations.get("1"));
     }
 
     @RequestMapping("up/{id}/{pwd}")

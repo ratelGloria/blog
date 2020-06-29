@@ -55,7 +55,7 @@ public class IRedisServiceImp implements IRedisService {
     }
 
     @Override
-    public void setValueString(String key, Map value) {
+    public void setValueString(String key,String value) {
         ValueOperations stringStringValueOperations = stringRedisTemplate.opsForValue();
         stringStringValueOperations.set(key,value);
     }
