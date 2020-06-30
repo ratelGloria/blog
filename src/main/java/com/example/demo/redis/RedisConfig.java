@@ -43,6 +43,9 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @param factory
      * @return
      * 这个地方是关键，如果不写依旧会报找不到redistemplate，写上之后就可以正常跑了，具体明天再看，今天有点晚了
+     *
+     * 2020.07.01 啊，继续昨天的写，这个Factory是用来创建链接的，比如之前的mysql创建数据库链接也是用Factory
+     * 比较好记的解释就是Redis连接工厂会生成到Redis数据库服务器的连接
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
@@ -78,4 +81,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     public ValueOperations<String,Object> valueOperations(RedisTemplate<String,Object> redisTemplate){
         return redisTemplate.opsForValue();
     }
+
+
+
 }

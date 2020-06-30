@@ -4,12 +4,15 @@ import com.example.demo.controller.HelloWorldController;
 import com.example.demo.controller.ItemController;
 import com.example.demo.controller.LoginController;
 import com.example.demo.pojo.Item;
+import com.example.demo.redis.IRedisService;
 import javafx.application.Application;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -92,6 +95,21 @@ public class Test {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("")));
 
+    }
+
+    @Autowired
+    IRedisService iRedisService;
+
+    @org.junit.Test
+    public void RedisTest(){
+
+//        iRedisService.setValue("1","gloria");
+//
+//        System.out.println(iRedisService.getValue("1"));
+
+        iRedisService.setValueString("testString","oo");
+
+        System.out.println(iRedisService.getValueString("testString"));
     }
 
 }
