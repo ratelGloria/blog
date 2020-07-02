@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.HashMap;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -102,14 +104,20 @@ public class Test {
 
     @org.junit.Test
     public void RedisTest(){
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+
+        objectObjectHashMap.put("1","aa");
+
+        System.out.println(objectObjectHashMap);
+        System.out.println(System.currentTimeMillis()+"========"+String.valueOf(System.currentTimeMillis()));
 
 //        iRedisService.setValue("1","gloria");
 //
 //        System.out.println(iRedisService.getValue("1"));
 
-        iRedisService.setValueString("testString","oo");
-
-        System.out.println(iRedisService.getValueString("testString"));
+//        iRedisService.setValueString("testString","oo");
+//
+//        System.out.println(iRedisService.getValueString("testString"));
     }
 
 }

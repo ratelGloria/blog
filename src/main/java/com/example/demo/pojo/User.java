@@ -7,7 +7,15 @@ import java.util.Date;
 public class User {
 
     private String id;
+    private Integer idNum;
 
+    public Integer getIdNum() {
+        return idNum;
+    }
+
+    public void setIdNum(Integer idNum) {
+        this.idNum = idNum;
+    }
 
     private String username;
 
@@ -132,14 +140,15 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id='" + id + '\'' +
+                ", idNum=" + idNum +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", token='" + token + '\'' +
-                ", createTime=" + createTime +
+                ", createTime='" + createTime + '\'' +
                 ", ifDeleted='" + ifDeleted + '\'' +
-                ", updateTime=" + updateTime +
+                ", updateTime='" + updateTime + '\'' +
                 ", ico='" + ico + '\'' +
                 '}';
     }

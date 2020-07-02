@@ -15,6 +15,7 @@
     <result column="if_deleted" property="ifDeleted" jdbcType="VARCHAR" />
     <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
     <result column="ico" property="ico" jdbcType="VARCHAR" />
+    <result column="id_num" property="idNum" jdbcType="INTEGER" />
   </resultMap>
   <insert id="insert" parameterType="com.example.demo.pojo.User" >
     <!--

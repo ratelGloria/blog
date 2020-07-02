@@ -12,7 +12,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-
+/*
+处理跨域
+* */
+@CrossOrigin
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -36,9 +39,9 @@ public class LoginController {
         }
         ServerResponse serverResponse = userService.queryUserById(username);
         User userInfo = (User)serverResponse.getData();
-
-        if(pwd.equals(userInfo.getPassword())){
-            return ServerResponse.serverResponseSuccess();
+System.out.println(userInfo+"----"+serverResponse.toString());
+        if(serverResponse.getStatus() == 1 && userInfo != null && pwd.equals(userInfo.getPassword())){
+            return ServerResponse.serverResponseSuccess(userInfo);
         }
         return ServerResponse.serverResponseUnSuccess();
     }
@@ -81,6 +84,17 @@ public class LoginController {
             return ServerResponse.serverResponseSuccess(userInfo);
         }
         return ServerResponse.serverResponseUnSuccess();
+    }
+
+    @RequestMapping("checkUserName/{username}")
+    public ServerResponse checkUserName(@PathVariable("username") String username){
+
+        ServerResponse serverResponse = userService.queryUserById(username);
+
+        if(serverResponse.getStatus()==1){
+            return ServerResponse.serverResponseUnSuccess();
+        }
+        return ServerResponse.serverResponseSuccess();
     }
 
     @RequestMapping("update")
