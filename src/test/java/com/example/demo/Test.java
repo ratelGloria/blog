@@ -2,7 +2,7 @@ package com.example.demo;
 
 import com.example.demo.controller.HelloWorldController;
 import com.example.demo.controller.ItemController;
-import com.example.demo.controller.LoginController;
+
 import com.example.demo.pojo.Item;
 import com.example.demo.redis.IRedisService;
 import javafx.application.Application;
@@ -67,8 +67,8 @@ public class Test {
     @Autowired
     private HelloWorldController helloWorldController;
 
-    @Autowired
-    private LoginController loginController;
+//    @Autowired
+//    private LoginController loginController;
     @Autowired
     private ItemController itemController;
 
@@ -90,6 +90,8 @@ public class Test {
 //        Assert.assertEquals(helloWorldController.getName(),"qqq");
 
 //        Assert.assertEquals(helloWorldController.getNumber(),22);
+
+
 
         Item item = new Item();
 
@@ -118,6 +120,14 @@ public class Test {
 //        iRedisService.setValueString("testString","oo");
 //
 //        System.out.println(iRedisService.getValueString("testString"));
+    }
+
+    @org.junit.Test
+    public void test2(){
+        String str1 = "通话1";
+        String str2 = "重地1";
+
+        System.out.println(String.format("str1: %d , str2: %d",str1.hashCode(),str2.hashCode()));
     }
 
 }
