@@ -22,7 +22,14 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.PreparedStatement;
+import java.util.*;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -124,10 +131,128 @@ public class Test {
 
     @org.junit.Test
     public void test2(){
-        String str1 = "通话1";
+        String str1 = "通话7";
         String str2 = "重地1";
 
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("1234567");
+
+        stringBuffer.reverse();
+        System.out.println(stringBuffer);
+        boolean a = str1.contains("a");
+
+        char c = str1.charAt(2);
+
+        int i = str1.indexOf("1");
+
+        byte[] bytes = str1.getBytes();
+        System.out.println(a+"---"+c+"===="+i+"----"+bytes.toString()+"===="+bytes);
         System.out.println(String.format("str1: %d , str2: %d",str1.hashCode(),str2.hashCode()));
+    }
+
+    @org.junit.Test
+    public void TestAboutFiles() throws IOException {
+
+        Path path = Paths.get("D:\\ser.txt");
+
+        File file = new File("D:\\ser.txt");
+
+        /*
+        * file转path
+        * */
+        Path path1 = file.toPath();
+
+        /*
+        * file转uri
+        * */
+        URI uri = file.toURI();
+
+        /*
+        * path转file
+        * */
+        path1.toFile();
+
+        Path path2 = Paths.get(".");
+        Path path3 = path2.toAbsolutePath();
+
+        Path path4 = Paths.get(".\\demo.iml");
+
+        System.out.println(path4.toAbsolutePath());
+        System.out.println(path4.toAbsolutePath().normalize());
+        System.out.println(path4.toRealPath());
+
+
+        ArrayList<Object> objects = new ArrayList<>();
+
+        objects.add("ab");
+        objects.add("c");
+
+        Object[] objects1 = objects.toArray();
+
+        String[] strings = new String[10];
+
+        Iterator<Object> iterator = objects.iterator();
+
+        ListIterator<Object> objectListIterator = objects.listIterator();
+
+        objectListIterator.previous();
+
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        Arrays.asList(strings);
+
+        try {
+
+        }finally {
+
+        }
+
+        try {
+
+        }catch (Exception e){
+
+        }
+
+        /**
+         *创建线程
+         */
+
+
+        /**
+         *实现一个动态代理
+         */
+
+        /**
+         * 克隆
+         */
+
+
+    }
+
+
+    @org.junit.Test
+    public void tryCatchTest(){
+
+        int i = tryCatch();
+        System.out.println(i);
+    }
+
+
+    public int tryCatch(){
+        int i = 1;
+        try {
+           System.out.println("first");
+//            i = i/0;
+            System.out.println("second");
+            return i=2;
+        }catch (Exception e){
+            System.out.println("third");
+            return i = 3;
+        }finally {
+            System.out.println("four");
+             i = 4;
+        }
     }
 
 }
