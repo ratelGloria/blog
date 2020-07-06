@@ -30,6 +30,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -195,7 +198,7 @@ public class Test {
 
         ListIterator<Object> objectListIterator = objects.listIterator();
 
-        objectListIterator.previous();
+//        objectListIterator.previous();
 
         while(iterator.hasNext()){
             System.out.println(iterator.next());
@@ -218,6 +221,22 @@ public class Test {
          *创建线程
          */
 
+        ExecuteExtendThread executeExtendThread = new ExecuteExtendThread();
+
+        executeExtendThread.start();
+
+        ExecuteInterfaceRunnable executeInterfaceRunnable = new ExecuteInterfaceRunnable();
+
+        Thread thread = new Thread(executeInterfaceRunnable);
+        Thread thread2 = new Thread(executeInterfaceRunnable);
+
+        ExecuteInterfaceCallable executeInterfaceCallable = new ExecuteInterfaceCallable();
+        Future<Object> objectFuture = new FutureTask<Object>(executeInterfaceCallable);
+
+//        objectFuture.s
+
+        thread.start();
+        thread2.start();
 
         /**
          *实现一个动态代理
@@ -229,6 +248,30 @@ public class Test {
 
 
     }
+
+    class ExecuteExtendThread extends Thread{
+
+
+    }
+
+    class ExecuteInterfaceRunnable implements Runnable
+    {
+
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread().getName()+"--------");
+        }
+    }
+
+    class ExecuteInterfaceCallable implements Callable {
+
+        @Override
+        public Object call() throws Exception {
+            return 22;
+        }
+    }
+
+
 
 
     @org.junit.Test
