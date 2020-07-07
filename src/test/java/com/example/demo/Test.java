@@ -28,9 +28,10 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
@@ -231,12 +232,25 @@ public class Test {
         Thread thread2 = new Thread(executeInterfaceRunnable);
 
         ExecuteInterfaceCallable executeInterfaceCallable = new ExecuteInterfaceCallable();
-        Future<Object> objectFuture = new FutureTask<Object>(executeInterfaceCallable);
-
+        FutureTask<String> objectFuture = new FutureTask<String>(executeInterfaceCallable);
+        Thread thread3 = new Thread(objectFuture);
 //        objectFuture.s
 
         thread.start();
         thread2.start();
+
+        thread3.setName("future");
+        thread3.start();
+
+        try {
+            Object o = objectFuture.get();
+            System.out.println(o);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
 
         /**
          *实现一个动态代理
@@ -246,6 +260,47 @@ public class Test {
          * 克隆
          */
 
+        /**
+         *sql 触发器
+         */
+
+        /**
+         *回家需要准备的东西
+         *
+         * 一个ssm+spring的框架，注意一定要跑通，不然就废了！！！
+         *
+         * 算法(二分什么的……)
+         *
+         * 手写一个数据库连接？
+         *
+         * java基础再看看(什么基本数据类型字节字符，最好再写一下io)
+         *
+         * redis数据类型
+         */
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            String url = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=gbk ;";
+            String username = "";
+            String pwd = "";
+            Connection connection = DriverManager.getConnection(url,username,pwd);
+
+            String sql = "";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                String name = resultSet.getString("name");
+            }
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -267,6 +322,7 @@ public class Test {
 
         @Override
         public Object call() throws Exception {
+            System.out.println(Thread.currentThread().getName()+"--------");
             return 22;
         }
     }
