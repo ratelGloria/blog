@@ -8,8 +8,8 @@
     -->
     <result column="id" property="id" jdbcType="INTEGER" />
     <result column="titile" property="titile" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="if_deleted" property="ifDeleted" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
@@ -35,7 +35,7 @@
     from blogs
   </select>
 
-  <insert id="addMessage" parameterType="com.example.demo.pojo.Blogs">
+  <insert id="addBlog" parameterType="com.example.demo.pojo.Blogs">
     insert into blogs (id, titile, create_time,
       update_time, author, if_deleted,
       content)

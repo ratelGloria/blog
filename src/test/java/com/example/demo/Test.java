@@ -29,7 +29,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -352,6 +354,16 @@ public class Test {
             System.out.println("four");
              i = 4;
         }
+    }
+
+    @org.junit.Test
+    public void timeTest(){
+
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = simpleDateFormat.format(date);
+        System.out.println(format);
     }
 
 }

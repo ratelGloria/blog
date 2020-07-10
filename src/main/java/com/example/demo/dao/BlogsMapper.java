@@ -24,5 +24,7 @@ public interface BlogsMapper {
      */
     List<Blogs> selectAll();
 
-    int addMessage(Blogs blogs);
+    int addBlog(Blogs blogs);
+
+    List<Blogs> selectBlog(String type);
 }
