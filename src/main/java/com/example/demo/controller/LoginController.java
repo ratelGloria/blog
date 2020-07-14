@@ -149,6 +149,8 @@ System.out.println(userInfo+"----"+serverResponse.toString());
         session.setAttribute("username",id);
 //        session.setAttribute("",id);
 
+        iRedisService.setValueString(id,"\""+sessionId+"\"");
+
         Cookie cookie = new Cookie("JSESSIONID",sessionId);
 
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();

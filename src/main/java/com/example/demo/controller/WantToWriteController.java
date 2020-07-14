@@ -30,8 +30,8 @@ public class WantToWriteController {
     @Autowired
     Blogs blogs;
 
-    @RequestMapping("addMessage/{title}/{content}")
-    public ServerResponse addMessage(@PathVariable("title") String title,@PathVariable("content") String content){
+    @RequestMapping("addBlog/{title}/{content}")
+    public ServerResponse addBlog(@PathVariable("title") String title,@PathVariable("content") String content){
 
         HttpSession session = httpAttributes.getSession();
 //        session.setAttribute("username","aaaaaa");
@@ -40,19 +40,23 @@ public class WantToWriteController {
         System.out.println(session.getAttribute("username"));
         session.setMaxInactiveInterval(10);
         String username = (String)session.getAttribute("username");
+        String sessionId = session.getId();
+
 //        25C71F9346ACC7D192D48F610DCADA65
-        User userValue = (User)iredisServiceImp.getValue(session.toString());
+        String userValueSessionId = (String)iredisServiceImp.getValue(username);
+        System.out.println(userValueSessionId+"=========="+sessionId);
+        System.out.println(session.getAttribute("username")+"==========");
 //        Blogs blogs = new Blogs();
-        if(userValue != null && !session.getAttribute("username").equals("") && session.getAttribute("username")!=null){
+        if(userValueSessionId.equals(sessionId)  && !session.getAttribute("username").equals("") && session.getAttribute("username")!=null){
             System.out.println("-----i come in----aaa--");
             blogs.setContent(content);
             blogs.setTitile(title);
             blogs.setAuthor(username);
             blogs.setCreateTime(System.currentTimeMillis());
             blogs.setUpdateTime(System.currentTimeMillis());
-            return blogService.addMessage(blogs);
+            return blogService.addBlog(blogs);
         }
-        return ServerResponse.serverResponseUnSuccess();
+        return ServerResponse.serverResponseUnSuccess("请登录");
 //无知使我对这个世界充满好奇
     }
 
