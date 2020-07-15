@@ -30,8 +30,9 @@ public class WantToWriteController {
     @Autowired
     Blogs blogs;
 
-    @RequestMapping("addBlog/{title}/{content}")
-    public ServerResponse addBlog(@PathVariable("title") String title,@PathVariable("content") String content){
+    @RequestMapping("addBlog")
+    public ServerResponse addBlog(@RequestParam(value = "title",required = false) String title,@RequestParam(value = "content",required = false) String content,
+                                  @RequestParam(value = "url",required = true)String url){
 
         HttpSession session = httpAttributes.getSession();
 //        session.setAttribute("username","aaaaaa");
@@ -48,7 +49,6 @@ public class WantToWriteController {
         System.out.println(session.getAttribute("username")+"==========");
 //        Blogs blogs = new Blogs();
         if(userValueSessionId.equals(sessionId)  && !session.getAttribute("username").equals("") && session.getAttribute("username")!=null){
-            System.out.println("-----i come in----aaa--");
             blogs.setContent(content);
             blogs.setTitile(title);
             blogs.setAuthor(username);
@@ -59,6 +59,19 @@ public class WantToWriteController {
         return ServerResponse.serverResponseUnSuccess("请登录");
 //无知使我对这个世界充满好奇
     }
+
+    /*
+    * image
+    *
+    * id
+    * blog_id
+    * url
+    * create_time
+    * update_time
+    * if_deleted
+    * type
+    *
+    * */
 
     @RequestMapping("getMessageList")
     public ServerResponse getMessageList(@RequestParam(value = "type",required = false) String type){

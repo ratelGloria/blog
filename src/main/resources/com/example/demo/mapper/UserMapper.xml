@@ -11,9 +11,9 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="token" property="token" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
-    <result column="if_deleted" property="ifDeleted" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="if_deleted" property="ifDeleted" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
     <result column="ico" property="ico" jdbcType="VARCHAR" />
     <result column="id_num" property="idNum" jdbcType="INTEGER" />
   </resultMap>
@@ -27,8 +27,8 @@
       if_deleted, update_time, ico
       )
     values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
-      #{ifDeleted,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{ico,jdbcType=VARCHAR}
+      #{password,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT},
+      #{ifDeleted,jdbcType=INTEGER}, #{updateTime,jdbcType=BIGINT}, #{ico,jdbcType=VARCHAR}
       )
   </insert>
   <select id="selectAll" resultMap="BaseResultMap" >

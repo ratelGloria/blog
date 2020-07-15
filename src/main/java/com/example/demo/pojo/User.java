@@ -29,13 +29,13 @@ public class User {
     private String token;
 
 
-    private String createTime;
+    private long createTime;
 
 
-    private String ifDeleted;
+    private int ifDeleted;
 
 
-    private String updateTime;
+    private long updateTime;
 
 
     private String ico;
@@ -91,27 +91,27 @@ public class User {
     }
 
 
-    public String getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
 
-    public String getIfDeleted() {
+    public int getIfDeleted() {
         return ifDeleted;
     }
 
 
-    public void setIfDeleted(String ifDeleted) {
-        this.ifDeleted = ifDeleted == null ? null : ifDeleted.trim();
+    public void setIfDeleted(int ifDeleted) {
+        this.ifDeleted = ifDeleted;
     }
 
 
-    public String getUpdateTime() {
+    public long getUpdateTime() {
         return updateTime;
     }
 
@@ -123,7 +123,7 @@ public class User {
      *
      * @mbggenerated
      */
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(long updateTime) {
         this.updateTime = updateTime;
     }
 

@@ -91,7 +91,7 @@ System.out.println(userInfo+"----"+serverResponse.toString());
         String timeStamp = String.valueOf(System.currentTimeMillis());
         user.setId(id);
         user.setPassword(pwd);
-        user.setCreateTime(timeStamp);
+        user.setCreateTime(Long.valueOf(timeStamp));
         ServerResponse serverResponse = userService.addUser(user);
         User userInfo = (User)serverResponse.getData();
 
@@ -124,7 +124,7 @@ System.out.println(userInfo+"----"+serverResponse.toString());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String format = simpleDateFormat.format(new Date());
         user.setPassword(pwd);
-        user.setUpdateTime(format);
+        user.setUpdateTime(Long.valueOf(format));
         user.setEmail(email);
         user.setIco(ico);
         ServerResponse serverResponse = userService.updateUser(user);
