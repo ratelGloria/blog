@@ -10,8 +10,10 @@ import com.example.demo.service.BlogService;
 import io.netty.handler.codec.base64.Base64Decoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
@@ -140,6 +142,107 @@ console.log($("#div1 img").attr("src"))
 </html>
         * */
     }
+
+    @RequestMapping("addImgUpload")
+    public ServerResponse addImgUpload(@RequestParam("imgUrl") MultipartFile imgUrl, HttpServletRequest request){
+
+        String originalFilename = imgUrl.getOriginalFilename();
+
+        System.out.println(originalFilename);
+
+
+        return null;
+/*
+* $(function () {
+
+        $("#commit").on("click",function () {
+console.log($("#div1 img").attr("src"))
+            let formData = new FormData();
+            var url_1 = $("#div1 img").attr("src");
+            console.log(url_1.files[0])
+            alert(url_1.files[0]);
+            formData.append("imgUrl",url_1);
+            $.ajax({
+                url:"http://192.168.1.122:8051/WantToWrite/addImgUpload",
+                type:"post",
+                // dataType:"json",不能写json
+                processData:false,
+                contentType:false,
+                // contentType: 'application/json; charset=utf-8',
+                data:formData,
+
+            })
+        })
+
+        $("#img").on("change",function (evt) {
+            var c = evt.target.files[0]
+            // var c = evt.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function(a){
+                var w = a.target.result;
+                $("#div1 img").attr("src",w)
+            }
+            reader.readAsDataURL(c);
+        })
+    })
+* */
+
+        /*
+        https://www.cnblogs.com/feipengting/p/12058938.html
+        * <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../css/testPage.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+<form enctype="multipart/form-data">
+    <input type="file" id="img">
+    <div id="div1"><img src=""></div>
+
+    <div style="width: 60px;height: 30px;background-color: aqua" id="commit">走你</div>
+</form>
+
+</body>
+
+<script>
+
+    $(function () {
+
+        $("#commit").on("click",function () {
+console.log($("#div1 img").attr("src"))
+            $.ajax({
+                url:"http://192.168.1.122:8051/WantToWrite/addImgMap",
+                type:"post",
+                dataType:"json",
+                // contentType: 'application/json; charset=utf-8',
+                data:{"imgUrl":$("#div1 img").attr("src")},
+
+            })
+        })
+
+        $("#img").on("change",function (evt) {
+            var c = evt.target.files[0]
+            // var c = evt.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function(a){
+                var w = a.target.result;
+                $("#div1 img").attr("src",w)
+            }
+            reader.readAsDataURL(c);
+        })
+    })
+
+</script>
+
+</html>
+        * */
+    }
+
 
     /*
     * image
